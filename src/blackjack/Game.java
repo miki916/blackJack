@@ -83,14 +83,23 @@ public class Game {
 				preguntar = false;
 				
 			}		
-		}		
+		}
 	}
 		
 	private void turnoJ2() {
 		
-		while(p1.getPuntos()>p2.getPuntos() && p2.comprobarPuntos())
-			p2.añadirCartas(baraja.cogerCarta());	
-		
+		while(p1.getPuntos()>p2.getPuntos() && p2.comprobarPuntos()) {
+			
+			try {
+				p2.añadirCartas(baraja.cogerCarta());	
+				System.out.println(p2.getCartas().toString());
+				System.out.println("Puntos: " + p2.getPuntos());
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}	
 	}
 	
 	
@@ -122,5 +131,11 @@ public class Game {
 		return new Player(nombre);
 		
 	}
-
+	
+	public static void clear() {  
+		
+		for(int i = 0; i<10;i++)
+				System.out.println();
+		
+	}  
 }
